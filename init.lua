@@ -2,18 +2,18 @@
 -- In this way, smart-splits doesn't work as expect
 -- default plugins of LazyVim has been disabled
 
---- [[
+--[[
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
--- ]]
+--]]
 
 
 
 -- # Method 2 - boot with original lazy.nvim
--- In this way, smart-splits works perfectly
+-- In this way, after changing `at_edge` to `stop` smart-splits doesn't work well now
 -- Please uncomment method 2 below and comment Method 1 for test.
 
---[[
+---[[
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -31,7 +31,7 @@ plugins = {
 	{
 		"mrjones2014/smart-splits.nvim",
 		opts = {
-			at_edge = 'wrap',
+			at_edge = 'stop',
 		},
 		config = function(_, opts)
 			-- change focus window
